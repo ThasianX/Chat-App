@@ -9,6 +9,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginScreenVC" customModule="Chat_App" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="ub7-bc-Viu" id="Vdp-wE-juF"/>
+                <outlet property="contactPointTextField" destination="6qb-Yj-X5A" id="GIV-un-QqJ"/>
+                <outlet property="facebookButton" destination="Icv-SP-6Wm" id="7gv-GP-Fm7"/>
+                <outlet property="loginButton" destination="mM9-Pe-Fq9" id="FXY-f6-hB0"/>
+                <outlet property="loginTitleLabel" destination="QTZ-lk-7Wo" id="UFe-Ju-m8r"/>
+                <outlet property="passwordTextField" destination="59g-40-L6j" id="rJ7-kD-2tV"/>
+                <outlet property="separatorLabel" destination="qPr-qi-eQb" id="SGm-Mc-k9u"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,13 +33,13 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUW-qn-gKO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub7-bc-Viu" userLabel="Back Button">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub7-bc-Viu" userLabel="Back Button">
                                             <rect key="frame" x="16" y="18" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="KVr-Pj-BdF"/>
                                                 <constraint firstAttribute="height" constant="25" id="jRD-5k-Sx9"/>
                                             </constraints>
-                                            <state key="normal" image="chevron.left" catalog="system"/>
+                                            <state key="normal" image="arrow-back-icon"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTZ-lk-7Wo" userLabel="Login Title Label">
                                             <rect key="frame" x="28" y="93" width="42" height="21"/>
@@ -40,7 +47,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qb-Yj-X5A" userLabel="Contact Point Text Field">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qb-Yj-X5A" userLabel="Contact Point Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                                             <rect key="frame" x="33" y="154.5" width="348" height="55"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="qWo-08-qup"/>
@@ -48,7 +55,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59g-40-L6j" userLabel="Password Text Field">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59g-40-L6j" userLabel="Password Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                                             <rect key="frame" x="33" y="233.5" width="348" height="55"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="HQo-yX-DoV"/>
@@ -133,6 +140,6 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
+        <image name="arrow-back-icon" width="25" height="25"/>
     </resources>
 </document>

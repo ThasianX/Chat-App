@@ -7,8 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpVC" customModule="Chat_App" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpScreenVC" customModule="Chat_App" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="Uk4-7x-IEl" id="T9s-z3-2YG"/>
+                <outlet property="emailAddressTextField" destination="ycF-P8-6an" id="XdS-Bu-Qpw"/>
+                <outlet property="errorLabel" destination="uMH-YN-o8v" id="aN9-Jm-u5S"/>
+                <outlet property="nameTextField" destination="9e6-31-IpK" id="5dv-RH-Px7"/>
+                <outlet property="passwordTextField" destination="lXL-x5-aSd" id="UeL-PW-SwY"/>
+                <outlet property="phoneNumberTextField" destination="z7b-gF-QTs" id="OgM-SD-TmQ"/>
+                <outlet property="signUpButton" destination="roB-km-pTv" id="vvr-Gz-emz"/>
+                <outlet property="titleLabel" destination="5UI-oi-fZT" id="es7-Rf-3Lb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +28,21 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyA-sW-zlm">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk4-7x-IEl">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk4-7x-IEl" userLabel="Back Button">
                             <rect key="frame" x="8" y="2" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="PZ8-Jf-IFi"/>
                                 <constraint firstAttribute="height" constant="25" id="wTs-Oy-oIe"/>
                             </constraints>
-                            <state key="normal" image="chevron.left" catalog="system"/>
+                            <state key="normal" image="arrow-back-icon"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UI-oi-fZT">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UI-oi-fZT" userLabel="Title Label">
                             <rect key="frame" x="20" y="77" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-31-IpK">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-31-IpK" userLabel="Name Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                             <rect key="frame" x="40" y="138" width="334" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="QZe-hF-97P"/>
@@ -42,7 +50,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z7b-gF-QTs">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z7b-gF-QTs" userLabel="Phone Number Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                             <rect key="frame" x="40" y="198" width="334" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="UPN-Yq-0xU"/>
@@ -50,7 +58,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycF-P8-6an">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycF-P8-6an" userLabel="E-mail Address Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                             <rect key="frame" x="40" y="258" width="334" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="XW9-qz-QSy"/>
@@ -58,7 +66,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-x5-aSd">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-x5-aSd" userLabel="Password Text Field" customClass="PaddedTextField" customModule="Chat_App" customModuleProvider="target">
                             <rect key="frame" x="40" y="318" width="334" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="weK-kN-dbV"/>
@@ -66,13 +74,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-YN-o8v">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-YN-o8v" userLabel="Error Label">
                             <rect key="frame" x="207" y="373" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roB-km-pTv">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roB-km-pTv" userLabel="Sign up Button">
                             <rect key="frame" x="60" y="398" width="294" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="x7M-cI-sZt"/>
@@ -118,6 +126,6 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
+        <image name="arrow-back-icon" width="25" height="25"/>
     </resources>
 </document>
