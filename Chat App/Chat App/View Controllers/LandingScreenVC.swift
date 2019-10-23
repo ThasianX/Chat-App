@@ -27,6 +27,8 @@ class LandingScreenVC: UIViewController {
     private let subtitleFont = UIFont.boldSystemFont(ofSize: 18)
     private let buttonFont = UIFont.boldSystemFont(ofSize: 24)
     
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("LandingScreenVC aware of viewdidload call")
@@ -71,13 +73,11 @@ class LandingScreenVC: UIViewController {
     }
 
     @objc private func didTapLoginButton() {
-        let loginVC = LoginScreenVC(nibName: "LoginScreenVC", bundle: nil)
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        coordinator?.login()
     }
 
     @objc private func didTapSignUpButton() {
-        let signUpVC = SignUpScreenVC(nibName: "SignUpScreenVC", bundle: nil)
-        self.navigationController?.pushViewController(signUpVC, animated: true)
+        coordinator?.signUp()
     }
 
 }

@@ -54,10 +54,22 @@ final class AppController {
       let vc = ChannelsVC(currentUser: user)
       rootViewController = NavigationController(vc)
     } else {
-      rootViewController = LandingScreenVC()
+      let vc = LandingScreenVC(nibName: "LandingScreenVC", bundle: nil)
+      rootViewController = NavigationController(vc)
     }
   }
   
+    
+    func login(){
+        let vc = LoginScreenVC(nibName: "LoginScreenVC", bundle: nil)
+        rootViewController = NavigationController(vc)
+    }
+    
+    func signUp(){
+        let vc = SignUpScreenVC(nibName: "SignUpScreenVC", bundle: nil)
+        rootViewController = NavigationController(vc)
+    }
+    
   // MARK: - Notifications
   
   @objc internal func userStateDidChange() {

@@ -25,6 +25,8 @@
 		1E741249235E76B400ADCAC9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E741248235E76B400ADCAC9 /* NavigationController.swift */; };
 		1E74124B235E8FF800ADCAC9 /* ChannelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E74124A235E8FF800ADCAC9 /* ChannelsVC.swift */; };
 		1E74124D235E916200ADCAC9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E74124C235E916200ADCAC9 /* Message.swift */; };
+		1E8F9A9C2360AFBF002D99C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F9A9B2360AFBF002D99C2 /* Coordinator.swift */; };
+		1E8F9A9E2360AFDD002D99C2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F9A9D2360AFDD002D99C2 /* MainCoordinator.swift */; };
 		1E9849EE235CCE75001CDB30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9849ED235CCE75001CDB30 /* AppDelegate.swift */; };
 		1E9849F7235CCE76001CDB30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E9849F6235CCE76001CDB30 /* Assets.xcassets */; };
 		1E9849FA235CCE76001CDB30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E9849F8235CCE76001CDB30 /* LaunchScreen.storyboard */; };
@@ -59,6 +61,8 @@
 		1E741248235E76B400ADCAC9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		1E74124A235E8FF800ADCAC9 /* ChannelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVC.swift; sourceTree = "<group>"; };
 		1E74124C235E916200ADCAC9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1E8F9A9B2360AFBF002D99C2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1E8F9A9D2360AFDD002D99C2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		1E9849EA235CCE75001CDB30 /* Chat App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E9849ED235CCE75001CDB30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E9849F6235CCE76001CDB30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3308172360A61C006B5171 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F9A9B2360AFBF002D99C2 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		1E474950235CE77400F58BAA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +120,6 @@
 				1E474959235CEECF00F58BAA /* SignUpScreenVC.xib */,
 				1E47495C235CF78E00F58BAA /* LoginScreenVC.swift */,
 				1E47495D235CF78E00F58BAA /* LoginScreenVC.xib */,
-				1E741248235E76B400ADCAC9 /* NavigationController.swift */,
 				1E74124A235E8FF800ADCAC9 /* ChannelsVC.swift */,
 				1EB44CD8235F3C0A00B12A0D /* ChatVC.swift */,
 			);
@@ -136,6 +147,8 @@
 				1E9849ED235CCE75001CDB30 /* AppDelegate.swift */,
 				1E741244235E763B00ADCAC9 /* AppController.swift */,
 				1E741246235E766000ADCAC9 /* AppSettings.swift */,
+				1E741248235E76B400ADCAC9 /* NavigationController.swift */,
+				1E8F9A9D2360AFDD002D99C2 /* MainCoordinator.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +183,7 @@
 		1E9849EC235CCE75001CDB30 /* Chat App */ = {
 			isa = PBXGroup;
 			children = (
+				1E3308172360A61C006B5171 /* Protocols */,
 				1E70D2D2235DF0F600BDCC41 /* Firebase */,
 				1E474953235CE78D00F58BAA /* Controllers */,
 				1E474952235CE77F00F58BAA /* Extensions */,
@@ -328,11 +342,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E47495E235CF78E00F58BAA /* LoginScreenVC.swift in Sources */,
+				1E8F9A9E2360AFDD002D99C2 /* MainCoordinator.swift in Sources */,
 				1EB44CDB235F423100B12A0D /* Channel.swift in Sources */,
 				1E70D2C9235DE87D00BDCC41 /* UIImage+Additions.swift in Sources */,
 				1EB44CD9235F3C0A00B12A0D /* ChatVC.swift in Sources */,
 				1EB44CDF235F49E500B12A0D /* UIView+Additions.swift in Sources */,
 				1E70D2CB235DE88F00BDCC41 /* UITextField+Additions.swift in Sources */,
+				1E8F9A9C2360AFBF002D99C2 /* Coordinator.swift in Sources */,
 				1EB44CDD235F438F00B12A0D /* UICollectionView+Additions.swift in Sources */,
 				1E70D2CF235DEB6400BDCC41 /* UIViewController+Additions.swift in Sources */,
 				1E9849EE235CCE75001CDB30 /* AppDelegate.swift in Sources */,
