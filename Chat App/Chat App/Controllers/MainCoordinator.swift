@@ -16,7 +16,6 @@ final class MainCoordinator: Coordinator {
     var rootViewController: UINavigationController
     
     init(window: UIWindow) {
-        
         FirebaseApp.configure()
         
         self.window = window

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
+import FirebaseAuth
 
 class LoginScreenVC: UIViewController {
     
@@ -31,6 +34,8 @@ class LoginScreenVC: UIViewController {
     
     private let separatorFont = UIFont.boldSystemFont(ofSize: 14)
     private let separatorTextColor = UIColor(hexString: "#464646")
+    
+    private let permissions: [Permission] = [.publicProfile]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +120,35 @@ class LoginScreenVC: UIViewController {
     }
     
     @objc func didTapFacebookButton() {
-        
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: permissions, viewController: self, completion: didReceiveFacebookLoginResult(loginResult:))
+    }
+    
+    private func didReceiveFacebookLoginResult(loginResult: LoginResult) {
+        switch loginResult {
+        case .success:
+            didLoginWithFacebook()
+        case .failed(_): break
+        default: break
+        }
+    }
+    
+    fileprivate func didLoginWithFacebook() {
+        // Successful log in with Facebook
+        if let accessToken = AccessToken.current {
+            // If Firebase enabled, we log the user into Firebase
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential, completion: { [weak self] (authResult, error) in
+                guard let `self` = self else { return }
+                
+                let alertController = UIAlertController(title: nil, message: "User successfully logged in", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.display(alertController: alertController)
+                
+            })
+            
+        }
     }
     
     func display(alertController: UIAlertController) {

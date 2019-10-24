@@ -20,9 +20,7 @@
 		1E70D2CF235DEB6400BDCC41 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70D2CE235DEB6400BDCC41 /* UIViewController+Additions.swift */; };
 		1E70D2D1235DED1D00BDCC41 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70D2D0235DED1D00BDCC41 /* PaddedTextField.swift */; };
 		1E70D2D4235DF0FF00BDCC41 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70D2D3235DF0FF00BDCC41 /* FirebaseAuthManager.swift */; };
-		1E741245235E763B00ADCAC9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E741244235E763B00ADCAC9 /* AppController.swift */; };
 		1E741247235E766000ADCAC9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E741246235E766000ADCAC9 /* AppSettings.swift */; };
-		1E741249235E76B400ADCAC9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E741248235E76B400ADCAC9 /* NavigationController.swift */; };
 		1E74124B235E8FF800ADCAC9 /* ChannelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E74124A235E8FF800ADCAC9 /* ChannelsVC.swift */; };
 		1E74124D235E916200ADCAC9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E74124C235E916200ADCAC9 /* Message.swift */; };
 		1E8F9A9C2360AFBF002D99C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F9A9B2360AFBF002D99C2 /* Coordinator.swift */; };
@@ -56,9 +54,7 @@
 		1E70D2CE235DEB6400BDCC41 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		1E70D2D0235DED1D00BDCC41 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		1E70D2D3235DF0FF00BDCC41 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
-		1E741244235E763B00ADCAC9 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		1E741246235E766000ADCAC9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		1E741248235E76B400ADCAC9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		1E74124A235E8FF800ADCAC9 /* ChannelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVC.swift; sourceTree = "<group>"; };
 		1E74124C235E916200ADCAC9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1E8F9A9B2360AFBF002D99C2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -145,9 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				1E9849ED235CCE75001CDB30 /* AppDelegate.swift */,
-				1E741244235E763B00ADCAC9 /* AppController.swift */,
 				1E741246235E766000ADCAC9 /* AppSettings.swift */,
-				1E741248235E76B400ADCAC9 /* NavigationController.swift */,
 				1E8F9A9D2360AFDD002D99C2 /* MainCoordinator.swift */,
 			);
 			path = Controllers;
@@ -352,7 +346,6 @@
 				1EB44CDD235F438F00B12A0D /* UICollectionView+Additions.swift in Sources */,
 				1E70D2CF235DEB6400BDCC41 /* UIViewController+Additions.swift in Sources */,
 				1E9849EE235CCE75001CDB30 /* AppDelegate.swift in Sources */,
-				1E741249235E76B400ADCAC9 /* NavigationController.swift in Sources */,
 				1E474956235CE8A400F58BAA /* LandingScreenVC.swift in Sources */,
 				1E70D2D1235DED1D00BDCC41 /* PaddedTextField.swift in Sources */,
 				1E70D2C7235DE84300BDCC41 /* UIButton+Additions.swift in Sources */,
@@ -364,7 +357,6 @@
 				1E74124D235E916200ADCAC9 /* Message.swift in Sources */,
 				1EB44CD7235F38EC00B12A0D /* DatabaseRepresentation.swift in Sources */,
 				1E70D2CD235DE8A900BDCC41 /* UIColor+Additions.swift in Sources */,
-				1E741245235E763B00ADCAC9 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +428,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -489,6 +482,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
