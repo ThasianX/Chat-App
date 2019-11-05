@@ -18,19 +18,12 @@ struct Message: MessageType {
     let id: String?
     
     var kind: MessageKind {
-        if let image = image {
-            return .photo(Image(image: image))
-        } else {
-            return .text(content)
-        }
+        return .text(content)
     }
     
     var messageId: String {
         return id ?? UUID().uuidString
     }
-    
-    var image: UIImage? = nil
-    var downloadURL: URL? = nil
     
     
     init(user: User, content: String) {
@@ -39,15 +32,6 @@ struct Message: MessageType {
         sentDate = Date()
         id = nil
     }
-    
-    init(user: User, image: UIImage) {
-        sender = Sender(id: user.uid, displayName: AppSettings.displayName)
-        self.image = image
-        content = ""
-        sentDate = Date()
-        id = nil
-    }
-    
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
@@ -69,10 +53,6 @@ struct Message: MessageType {
         
         if let content = data["content"] as? String {
             self.content = content
-            downloadURL = nil
-        } else if let urlString = data["url"] as? String, let url = URL(string: urlString) {
-            downloadURL = url
-            content = ""
         } else {
             return nil
         }
@@ -89,11 +69,7 @@ extension Message: DatabaseRepresentation {
             "senderName": sender.displayName
         ]
         
-        if let url = downloadURL {
-            rep["url"] = url.absoluteString
-        } else {
-            rep["content"] = content
-        }
+        rep["content"] = content
         
         return rep
     }

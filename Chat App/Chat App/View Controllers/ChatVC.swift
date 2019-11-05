@@ -25,20 +25,6 @@ final class ChatVC: MessagesViewController {
     private var reference: CollectionReference?
     private let storage = Storage.storage().reference()
     
-    private var isSendingPhoto = false {
-      didSet {
-        DispatchQueue.main.async {
-//          self.messageInputBar.leftStackViewItems.forEach { item in
-//            item.isEnabled = !self.isSendingPhoto
-//          }
-            self.messageInputBar.leftStackViewItems.forEach { item in
-                let item = item as? InputBarButtonItem
-                item!.isEnabled = !self.isSendingPhoto
-            }
-        }
-      }
-    }
-    
     deinit {
         messageListener?.remove()
     }
@@ -86,35 +72,6 @@ final class ChatVC: MessagesViewController {
       messagesCollectionView.messagesDataSource = self
       messagesCollectionView.messagesLayoutDelegate = self
       messagesCollectionView.messagesDisplayDelegate = self
-      
-      let cameraItem = InputBarButtonItem(type: .system) // 1
-      cameraItem.tintColor = .primary
-      cameraItem.image = #imageLiteral(resourceName: "camera")
-      cameraItem.addTarget(
-        self,
-        action: #selector(cameraButtonPressed), // 2
-        for: .primaryActionTriggered
-      )
-      cameraItem.setSize(CGSize(width: 60, height: 30), animated: false)
-      
-      messageInputBar.leftStackView.alignment = .center
-      messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
-      messageInputBar.setStackViewItems([cameraItem], forStack: .left, animated: false) // 3
-    }
-    
-    //MARK: Actions
-
-    @objc private func cameraButtonPressed() {
-      let picker = UIImagePickerController()
-      picker.delegate = self
-
-      if UIImagePickerController.isSourceTypeAvailable(.camera) {
-        picker.sourceType = .camera
-      } else {
-        picker.sourceType = .photoLibrary
-      }
-
-      present(picker, animated: true, completion: nil)
     }
     
     //MARK: Helper methods
@@ -151,102 +108,15 @@ final class ChatVC: MessagesViewController {
     }
     
     private func handleDocumentChange(_ change: DocumentChange) {
-      guard var message = Message(document: change.document) else {
+      guard let message = Message(document: change.document) else {
         return
       }
       
       switch change.type {
       case .added:
-        if let url = message.downloadURL {
-          downloadImage(at: url) { [weak self] image in
-            guard let `self` = self else {
-              return
-            }
-            guard let image = image else {
-              return
-            }
-            
-            message.image = image
-            self.insertNewMessage(message)
-          }
-        } else {
-          insertNewMessage(message)
-        }
-        
+        insertNewMessage(message)
       default:
         break
-      }
-    }
-    
-    private func uploadImage(_ image: UIImage, to channel: Channel, completion: @escaping (URL?) -> Void) {
-      guard let channelID = channel.id else {
-        completion(nil)
-        return
-      }
-      
-      guard let scaledImage = image.scaledToSafeUploadSize, let data = scaledImage.jpegData(compressionQuality: 0.4) else {
-        completion(nil)
-        return
-      }
-      
-      let metadata = StorageMetadata()
-      metadata.contentType = "image/jpeg"
-
-      let imageName = [UUID().uuidString, String(Date().timeIntervalSince1970)].joined()
-//      storage.child(channelID).child(imageName).putData(data, metadata: metadata) { meta, error in
-//        completion(meta?.downloadURL())
-//      }
-        
-        let storageRef = storage.child(channelID).child("\(imageName).jpg")
-        storageRef.putData(data, metadata: metadata, completion: { (metadata, error) in
-            if error != nil, metadata != nil {
-                return
-            }
-            
-            storageRef.downloadURL(completion: { (url, error) in
-                if error != nil {
-                    return
-                }
-                if let imageUrl = url?.absoluteURL {
-                    completion(imageUrl)
-                }
-            })
-        })
-        
-    }
-
-    private func sendPhoto(_ image: UIImage) {
-      isSendingPhoto = true
-      
-      uploadImage(image, to: channel) { [weak self] url in
-        guard let `self` = self else {
-          return
-        }
-        self.isSendingPhoto = false
-        
-        guard let url = url else {
-          return
-        }
-        
-        var message = Message(user: self.user, image: image)
-        message.downloadURL = url
-        
-        self.save(message)
-        self.messagesCollectionView.scrollToBottom()
-      }
-    }
-    
-    private func downloadImage(at url: URL, completion: @escaping (UIImage?) -> Void) {
-      let ref = Storage.storage().reference(forURL: url.absoluteString)
-      let megaByte = Int64(1 * 1024 * 1024)
-      
-      ref.getData(maxSize: megaByte) { data, error in
-        guard let imageData = data else {
-          completion(nil)
-          return
-        }
-        
-        completion(UIImage(data: imageData))
       }
     }
 }
@@ -325,31 +195,4 @@ extension ChatVC: MessageInputBarDelegate {
         save(message)
         inputBar.inputTextView.text = ""
     }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-
-extension ChatVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    picker.dismiss(animated: true, completion: nil)
-
-    if let asset = info[.phAsset] as? PHAsset { // 1
-      let size = CGSize(width: 500, height: 500)
-      PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: nil) { result, info in
-        guard let image = result else {
-          return
-        }
-
-        self.sendPhoto(image)
-      }
-    } else if let image = info[.originalImage] as? UIImage { // 2
-      sendPhoto(image)
-    }
-  }
-
-  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    picker.dismiss(animated: true, completion: nil)
-  }
-
 }
