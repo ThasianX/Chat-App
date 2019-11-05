@@ -140,9 +140,7 @@ class LoginScreenVC: UIViewController {
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
             Auth.auth().signIn(with: credential, completion: { (authResult, error) in
-                
                 AppSettings.displayName = authResult?.user.displayName
-                print(AppSettings.displayName!)
             })
             
         }
