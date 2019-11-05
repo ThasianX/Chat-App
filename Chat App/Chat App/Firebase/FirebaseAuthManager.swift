@@ -14,6 +14,7 @@ class FirebaseAuthManager {
     func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
             if authResult?.user != nil{
+                AppSettings.displayName = authResult?.user.displayName
                 completionBlock(true)
             } else {
                 completionBlock(false)
@@ -26,6 +27,7 @@ class FirebaseAuthManager {
             if let error = error, let _ = AuthErrorCode(rawValue: error._code) {
                 completionBlock(false)
             } else {
+                AppSettings.displayName = result?.user.displayName
                 completionBlock(true)
             }
         })

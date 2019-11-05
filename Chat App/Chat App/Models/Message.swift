@@ -48,6 +48,7 @@ struct Message: MessageType {
         id = nil
     }
     
+    
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
         

@@ -125,7 +125,7 @@ final class ChatVC: MessagesViewController {
           print("Error sending message: \(e.localizedDescription)")
           return
         }
-        
+        print("save called")
         self.messagesCollectionView.scrollToBottom()
       }
     }
@@ -134,7 +134,7 @@ final class ChatVC: MessagesViewController {
       guard !messages.contains(message) else {
         return
       }
-      
+      print("insert new message called")
       messages.append(message)
       messages.sort()
       
@@ -319,6 +319,7 @@ extension ChatVC: MessageInputBarDelegate {
     
     // 1
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        print("Calling message input bar")
         let message = Message(user: user, content: text)
         
         save(message)

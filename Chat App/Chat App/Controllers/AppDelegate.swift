@@ -11,20 +11,13 @@ import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    private var mainCoordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        let mainCoordinator = MainCoordinator(window: window)
         
-        self.window = window
-        self.mainCoordinator = mainCoordinator
+        AppController.shared.show(in: UIWindow(frame: UIScreen.main.bounds))
         
-        mainCoordinator.start()
         return true
     }
 }

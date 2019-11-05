@@ -139,13 +139,10 @@ class LoginScreenVC: UIViewController {
             // If Firebase enabled, we log the user into Firebase
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
-            Auth.auth().signIn(with: credential, completion: { [weak self] (authResult, error) in
-                guard let `self` = self else { return }
+            Auth.auth().signIn(with: credential, completion: { (authResult, error) in
                 
-                let alertController = UIAlertController(title: nil, message: "User successfully logged in", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.display(alertController: alertController)
-                
+                AppSettings.displayName = authResult?.user.displayName
+                print(AppSettings.displayName!)
             })
             
         }
