@@ -58,6 +58,7 @@ final class ChatVC: MessagesViewController {
         }
         
         snapshot.documentChanges.forEach { change in
+            print("handle document change called")
           self.handleDocumentChange(change)
         }
       }
@@ -91,6 +92,7 @@ final class ChatVC: MessagesViewController {
       guard !messages.contains(message) else {
         return
       }
+        
       print("insert new message called")
       messages.append(message)
       messages.sort()
@@ -108,7 +110,8 @@ final class ChatVC: MessagesViewController {
     }
     
     private func handleDocumentChange(_ change: DocumentChange) {
-      guard let message = Message(document: change.document) else {
+        guard let message = Message(document: change.document) else {
+        print("message is nil")
         return
       }
       

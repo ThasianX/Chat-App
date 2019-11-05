@@ -35,25 +35,30 @@ struct Message: MessageType {
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
+        print(data)
         
-        guard let sentDate = data["created"] as? Date else {
+        guard let sentDate = data["created"] as? Timestamp else {
+            print("sent date nil")
             return nil
         }
         guard let senderID = data["senderID"] as? String else {
+            print("sender id nil")
             return nil
         }
         guard let senderName = data["senderName"] as? String else {
+            print("sender name nil")
             return nil
         }
         
         id = document.documentID
         
-        self.sentDate = sentDate
+        self.sentDate = sentDate.dateValue()
         sender = Sender(id: senderID, displayName: senderName)
         
         if let content = data["content"] as? String {
             self.content = content
         } else {
+            print("content nil")
             return nil
         }
     }
