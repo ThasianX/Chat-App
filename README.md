@@ -5,7 +5,7 @@
 2. Run 'pod install'
 3. Open the newly created workspace file in the project directory
 4. Create a Firebase account and register a new app, following Firebase's instructions
-5. Once you get the GoogleService-Info.plist file, replace the current one in the Supporting Files folder of the project with yours
+5. Once you get the GoogleService-Info.plist file, add it into the Supporting Files folder of the project with yours
 6. The app is ready to run
 
 ### Planning
