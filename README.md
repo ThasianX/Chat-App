@@ -1,4 +1,4 @@
-# Chat App
+# Chat App **Archived - Lost interest
 
 ### How to set up
 1. Navigate to the directory in which you have the project downloaded.
